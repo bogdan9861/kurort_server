@@ -67,7 +67,7 @@ const getAll = async (req, res) => {
 
 const getCompare = async (req, res) => {
   try {
-    const { month } = req.body;
+    const { month } = req.params;
 
     if (!month) {
       return res.status(400).json({ message: "All fields are required" });
