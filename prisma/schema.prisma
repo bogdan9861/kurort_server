@@ -35,6 +35,8 @@ model indications {
   gas_price    Int?
   total_price  Int?
 
+  date DateTime @default(now())
+
   User   User? @relation(fields: [userId], references: [id])
   userId Int?
 }

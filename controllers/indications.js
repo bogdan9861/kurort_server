@@ -57,6 +57,9 @@ const getAll = async (req, res) => {
       where: {
         userId: req.user.id,
       },
+      orderBy: {
+        date: "asc",
+      },
     });
 
     res.status(200).json(indications);
