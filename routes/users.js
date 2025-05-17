@@ -3,10 +3,11 @@ const router = express.Router();
 
 const fileMiddleware = require("../middleware/file");
 const { auth } = require("../middleware/auth");
-const { register, login, current } = require("../controllers/users");
+const { register, login, current, edit } = require("../controllers/users");
 
-router.post("/register", fileMiddleware.single("image"), register);
-router.post("/login", fileMiddleware.single("image"), login);
+router.post("/register", register);
+router.post("/login", login);
+router.put("/", auth, edit);
 router.get("/", auth, current);
 
 module.exports = router;

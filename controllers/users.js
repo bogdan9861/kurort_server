@@ -100,8 +100,36 @@ const current = async (req, res) => {
   }
 };
 
+const edit = async (req, res) => {
+  try {
+    const { name, login } = req.body;
+
+    const data = {};
+
+    Array.from(Object.keys(req.body)).forEach((el) => {
+      if (!req.body[el]) return;
+
+      data[el] = req.body[el];
+    });
+
+    const user = await prisma.user.update({
+      where: {
+        id: req.user.id,
+      },
+      data,
+    });
+
+    res.status(200).json(user);
+  } catch (error) {
+    console.log(error);
+
+    res.status(500).json({ message: "Unknown server error" });
+  }
+};
+
 module.exports = {
   register,
   login,
   current,
+  edit,
 };
