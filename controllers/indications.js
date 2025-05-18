@@ -110,9 +110,30 @@ const getCompare = async (req, res) => {
   }
 };
 
+const remove = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    if (!id) {
+      return res.status(400).json({ message: "All fields are required" });
+    }
+
+    await prisma.indications.delete({
+      where: {
+        id,
+      },
+    });
+
+    res.status(204).json({ status: "success" });
+  } catch (error) {
+    res.status(500).json({ message: "Unknown server error" });
+  }
+};
+
 module.exports = {
   create,
   getAll,
   getCompare,
   getCompare,
+  remove,
 };
