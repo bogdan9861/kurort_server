@@ -97,6 +97,8 @@ const getCompare = async (req, res) => {
       waterH: compareMonth.waterH - thisMonthIndications.waterH,
 
       isPositive: thisMonthIndications.total_price < compareMonth.total_price,
+      compare_total_price: compareMonth.total_price,
+      this_total_price: compareMonth.total_price,
 
       gas_price: compareMonth.gas_price - thisMonthIndications.gas_price,
       light_price: compareMonth.light_price - thisMonthIndications.light_price,
