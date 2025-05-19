@@ -6,7 +6,7 @@ require("dotenv").config();
 
 const app = express();
 
-app.use(cors({ origin: "https://snazzy-froyo-bb2151.netlify.app" }));
+app.use(cors({ origin: "*" }));
 
 app.use(logger("dev"));
 app.use(express.json());
@@ -15,6 +15,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/public", express.static(path.join(__dirname, "public")));
 
 app.use("/api/users", require("./routes/users"));
-app.use("/api/indications", require("./routes/indications"));
+app.use("/api/requests", require("./routes/requests"));
 
 module.exports = app;

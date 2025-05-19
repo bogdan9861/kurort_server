@@ -16,27 +16,12 @@ model User {
   login    String @unique
   password String
 
-  Indications indications[]
-
   @@map("users")
 }
 
-model indications {
-  id     String @id @default(uuid())
-  light  Int
-  waterC Int
-  waterH Int
-  gas    Int
-  month  Int
-
-  light_price  Int?
-  waterC_price Int?
-  waterH_price Int?
-  gas_price    Int?
-  total_price  Int?
-
-  date DateTime @default(now())
-
-  User   User? @relation(fields: [userId], references: [id])
-  userId Int?
+model requests {
+  id    String   @id @default(uuid())
+  name  String
+  phone String
+  date  DateTime @default(now())
 }
