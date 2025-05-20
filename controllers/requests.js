@@ -38,7 +38,7 @@ const remove = async (req, res) => {
       },
     });
 
-    res.status(204).json({ status: "success" });
+    res.status(200).json({ status: "success" });
   } catch (error) {
     console.log(error);
 
