@@ -23,5 +23,6 @@ model requests {
   id    String   @id @default(uuid())
   name  String
   phone String
+  text  String?
   date  DateTime @default(now())
 }

@@ -2,12 +2,13 @@ const { prisma } = require("../prisma/prisma.client");
 
 const create = async (req, res) => {
   try {
-    const { name, phone } = req.body;
+    const { name, phone, text } = req.body;
 
     const requset = await prisma.requests.create({
       data: {
         name,
         phone,
+        text: text || "",
       },
     });
 
